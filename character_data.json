@@ -1,0 +1,429 @@
+{
+  "personality_weights": {
+    "suspicious": {"Suspicious": 0.4, "Hostile": 0.3, "Neutral": 0.2, "Friendly": 0.1},
+    "friendly": {"Friendly": 0.5, "Neutral": 0.3, "Suspicious": 0.15, "Hostile": 0.05},
+    "gossipy": {"Neutral": 0.3, "Friendly": 0.4, "Suspicious": 0.2, "Hostile": 0.1},
+    "loyal": {"Friendly": 0.4, "Neutral": 0.4, "Suspicious": 0.15, "Hostile": 0.05},
+    "paranoid": {"Suspicious": 0.5, "Hostile": 0.3, "Neutral": 0.15, "Friendly": 0.05},
+    "analytical": {"Neutral": 0.5, "Suspicious": 0.3, "Friendly": 0.1, "Hostile": 0.1},
+    "creative": {"Friendly": 0.3, "Neutral": 0.4, "Suspicious": 0.2, "Hostile": 0.1},
+    "stern": {"Neutral": 0.4, "Suspicious": 0.3, "Hostile": 0.2, "Friendly": 0.1},
+    "ambitious": {"Neutral": 0.4, "Suspicious": 0.3, "Friendly": 0.2, "Hostile": 0.1},
+    "cautious": {"Neutral": 0.5, "Suspicious": 0.3, "Friendly": 0.15, "Hostile": 0.05}
+  },
+  "goal_templates": {
+    "investigate": ["Investigate {target}", "Watch {target} closely", "Find out what {target} is hiding"],
+    "avoid": ["Avoid {target}", "Stay away from {target}", "Keep distance from {target}"],
+    "befriend": ["Get closer to {target}", "Build trust with {target}", "Help {target}"],
+    "routine": ["Check on the {location}", "Visit the {location}", "Work at the {location}"],
+    "protect": ["Protect {target}", "Guard {target}", "Watch over {target}"]
+  },
+  "emotion_triggers": {
+    "Hostile": "angry",
+    "Suspicious": "anxious",
+    "Friendly": "happy",
+    "Neutral": "calm"
+  },
+  "wish_categories": {
+    "infrastructure": [
+      "The town needs a clinic expansion",
+      "We need better roads around town",
+      "The library needs more funding",
+      "We should renovate the courthouse",
+      "The jail needs repairs"
+    ],
+    "social": [
+      "We need more community events",
+      "The town should have a festival",
+      "We need a town meeting hall",
+      "People should gather more often",
+      "We need more social spaces"
+    ],
+    "economy": [
+      "The store needs more supplies",
+      "We need more businesses in town",
+      "The factory needs modernization",
+      "We should attract more trade",
+      "The town economy needs help"
+    ],
+    "safety": [
+      "We need more patrols near the graveyard",
+      "The town needs better lighting at night",
+      "We should increase police presence",
+      "Suspicious activity needs investigation",
+      "The town feels unsafe lately"
+    ],
+    "personal": [
+      "I wish I had a better home",
+      "I need a place to relax",
+      "I wish people understood me better",
+      "I need more purpose in life",
+      "I wish I could change my past"
+    ],
+    "political": [
+      "The Mayor needs to be more transparent",
+      "We need better leadership",
+      "Town decisions should involve more people",
+      "The Judge is too harsh",
+      "We need new town policies"
+    ]
+  },
+  "wish_weights": {
+    "suspicious": {"safety": 0.4, "political": 0.3, "social": 0.1, "infrastructure": 0.1, "economy": 0.05, "personal": 0.05},
+    "friendly": {"social": 0.4, "infrastructure": 0.2, "economy": 0.2, "personal": 0.1, "safety": 0.05, "political": 0.05},
+    "analytical": {"infrastructure": 0.3, "economy": 0.3, "political": 0.2, "safety": 0.1, "social": 0.05, "personal": 0.05},
+    "ambitious": {"economy": 0.4, "political": 0.3, "infrastructure": 0.15, "social": 0.1, "personal": 0.03, "safety": 0.02},
+    "paranoid": {"safety": 0.5, "political": 0.25, "personal": 0.15, "social": 0.05, "infrastructure": 0.03, "economy": 0.02},
+    "gossipy": {"social": 0.5, "political": 0.2, "personal": 0.15, "safety": 0.1, "infrastructure": 0.03, "economy": 0.02},
+    "stern": {"infrastructure": 0.3, "safety": 0.3, "political": 0.2, "economy": 0.1, "social": 0.05, "personal": 0.05},
+    "creative": {"infrastructure": 0.3, "social": 0.3, "personal": 0.2, "economy": 0.1, "political": 0.05, "safety": 0.05},
+    "loyal": {"social": 0.3, "safety": 0.25, "infrastructure": 0.2, "economy": 0.15, "political": 0.05, "personal": 0.05},
+    "cautious": {"safety": 0.35, "infrastructure": 0.25, "economy": 0.2, "personal": 0.1, "social": 0.05, "political": 0.05}
+  },
+  "memory_themes": {
+    "safety_concern": ["crime", "suspicious", "danger", "threat", "unsafe", "patrol"],
+    "economic_worry": ["money", "business", "trade", "economy", "poor", "struggling"],
+    "suspicious_activity": ["GUILTY", "investigate", "hiding", "secret", "suspicious"],
+    "town_gossip": ["heard", "rumor", "gossip", "said", "told"],
+    "personal_regret": ["regret", "mistake", "guilt", "sorry", "failed"],
+    "future_hope": ["wish", "hope", "dream", "want", "desire", "better"]
+  },
+  "thought_templates": {
+    "judge": {
+      "neutral": [
+        "reviewing today's cases on the way to the {location}",
+        "heading to the {location}, mind on difficult decisions ahead",
+        "walking to the {location}, weighing justice against mercy once again"
+      ],
+      "stern_interpretations": [
+        "The law is clear. Feelings are irrelevant. Order must be maintained.",
+        "Some think I'm too harsh. They don't understand what I've seen.",
+        "Years on the bench have taught me consistency matters more than popularity."
+      ],
+      "kind_interpretations": [
+        "Every ruling affects lives. The weight never gets lighter.",
+        "The law is black and white, but people are shades of gray.",
+        "People see the robe and think I'm infallible. They don't see the sleepless nights."
+      ]
+    },
+    "mayor": {
+      "neutral": [
+        "on the way to the {location}, thinking about the budget crisis",
+        "heading to the {location}, another day of impossible choices",
+        "walking to the {location}, wondering how to keep this town afloat"
+      ],
+      "ambitious_interpretations": [
+        "This town has potential. Just need the right moves.",
+        "Every crisis is an opportunity if you know how to spin it.",
+        "They elected me to fix things, and I will. Not just maintain - transform."
+      ],
+      "struggling_interpretations": [
+        "Trying to please everyone means pleasing no one.",
+        "Some days I wonder if I'm cut out for this.",
+        "Politics is about vision. Right now my vision is just keeping the lights on."
+      ]
+    },
+    "police": {
+      "neutral": [
+        "on patrol to the {location}, eyes scanning for anything unusual",
+        "heading to the {location}, maintaining vigilance",
+        "walking to the {location}, can't shake the feeling something's off"
+      ],
+      "paranoid_interpretations": [
+        "Pattern recognition. That's what keeps this town safe.",
+        "People think I'm overreacting. They didn't see what I saw.",
+        "Something's brewing. I can feel it. Years of experience have given me an instinct."
+      ],
+      "responsible_interpretations": [
+        "Can't let my guard down. Not again. Not after last time.",
+        "Every patrol is a chance to prevent something terrible.",
+        "The weight of this badge is heavier than people think."
+      ]
+    },
+    "librarian": {
+      "neutral": [
+        "on the way to the {location}, thinking about what I overheard earlier",
+        "heading to the {location}, piecing together today's conversations",
+        "walking to the {location}, curious about the connections I'm seeing"
+      ],
+      "gossipy_interpretations": [
+        "Information is power. Not gossip - information.",
+        "Person A says one thing, Person B says another.",
+        "They think I'm just shelving books. I'm connecting dots."
+      ],
+      "analytical_interpretations": [
+        "Patterns in behavior, patterns in borrowing habits.",
+        "The library is where secrets come to hide in plain sight.",
+        "Every patron has a story. I've watched children grow up."
+      ]
+    },
+    "doctor": {
+      "neutral": [
+        "heading to the {location}, reviewing patient symptoms in my mind",
+        "on the way to the {location}, can't stop thinking about the test results",
+        "walking to the {location}, something medical doesn't add up"
+      ],
+      "paranoid_interpretations": [
+        "Three cases of similar symptoms this month. Coincidence?",
+        "They think I'm crazy. But my medical training says trust the data.",
+        "Can't shake this feeling. Years of medical experience have given me an instinct."
+      ],
+      "thoughtful_interpretations": [
+        "Left the city to escape the stress, but I brought my analytical mind.",
+        "Medical training never turns off. Always observing, diagnosing.",
+        "The responsibility of being the town's only doctor weighs heavily."
+      ]
+    },
+    "reporter": {
+      "neutral": [
+        "scanning the {location} for anything worth reporting",
+        "notebook in hand, heading to the {location}",
+        "making mental notes on the way to the {location}"
+      ],
+      "interpretations": [
+        "There's a story here. Someone is hiding something.",
+        "Front page material if I can confirm it. Need two sources.",
+        "Everyone in this town has a secret. My job is to find which ones matter."
+      ]
+    },
+    "whisper": {
+      "neutral": [
+        "drifting through shadows toward the {location}",
+        "observing from the periphery, moving to the {location}",
+        "unseen, unheard, heading to the {location}"
+      ],
+      "interpretations": [
+        "They go about their lives, unaware. Blissfully unaware.",
+        "Secrets within secrets. Truths they're not ready for.",
+        "Watching. Always watching. Someone has to know."
+      ]
+    }
+  },
+  "interaction_templates": {
+    "friendly": {
+      "observations": [
+        "spotted {npc} and immediately headed over",
+        "couldn't help but approach {npc} with the latest news",
+        "glad to see {npc} - been wanting to catch up"
+      ],
+      "gossipy_interpretations": [
+        "They always have interesting things to share",
+        "Perfect chance to exchange information",
+        "I wonder what they know about what's been happening"
+      ],
+      "loyal_interpretations": [
+        "One of the few people in this town I truly trust",
+        "We've been through a lot together",
+        "They understand what I'm dealing with"
+      ],
+      "default_interpretations": [
+        "They bring a positive energy to this place",
+        "One of the good ones in this town",
+        "Easy to talk to, genuine person"
+      ],
+      "decisions": [
+        "Should stop and chat for a bit",
+        "Might brighten both our days",
+        "Connection is important in a small town"
+      ]
+    },
+    "hostile": {
+      "suspicious_observations": [
+        "of course {npc} is here - always showing up",
+        "noticed {npc} watching me again",
+        "can't go anywhere without running into {npc}"
+      ],
+      "suspicious_interpretations": [
+        "They're definitely keeping tabs on people",
+        "Too many coincidences. This isn't random.",
+        "What are they really doing here?"
+      ],
+      "stern_observations": [
+        "unfortunately have to deal with {npc} again",
+        "saw {npc} and immediately felt my patience tested",
+        "could do without seeing {npc} today"
+      ],
+      "stern_interpretations": [
+        "They never learn. Same mistakes, different day.",
+        "Disrespectful attitude getting old",
+        "Some people just don't understand responsibility"
+      ],
+      "default_observations": [
+        "great, {npc} is here. Just what I needed.",
+        "trying to avoid {npc} but here they are",
+        "can't believe I have to see {npc} again"
+      ],
+      "default_interpretations": [
+        "They always manage to ruin my day",
+        "Still angry about what happened before",
+        "Why do they have to be everywhere?"
+      ],
+      "decisions": [
+        "Need to document this encounter. Pattern emerging.",
+        "Staying alert. Not turning my back.",
+        "Going to keep my distance but watch carefully"
+      ]
+    },
+    "suspicious": {
+      "authority_observations": [
+        "observing {npc}'s behavior carefully",
+        "noticed {npc} acting... differently than usual",
+        "keeping {npc} in my sights"
+      ],
+      "authority_interpretations": [
+        "Body language is off. Something they're not saying.",
+        "Story doesn't quite add up. Need more information.",
+        "Years of experience tell me to pay attention here"
+      ],
+      "paranoid_observations": [
+        "noticed {npc} lurking near the {location}",
+        "watching {npc} with growing concern",
+        "can't shake this feeling about {npc}"
+      ],
+      "paranoid_interpretations": [
+        "Why are they really here? Cover story seems thin.",
+        "Too many questions. Not enough answers.",
+        "Something's wrong. I can feel it."
+      ],
+      "default_observations": [
+        "wondering what {npc} is really up to",
+        "saw {npc} and felt... uncertain",
+        "not sure what to make of {npc} lately"
+      ],
+      "default_interpretations": [
+        "Used to think I knew them, but now I'm not so sure",
+        "Behavior has been strange recently",
+        "Maybe I'm reading too much into it, but..."
+      ],
+      "decisions": [
+        "Making mental notes. May need to follow up.",
+        "Going to ask around about their recent activities",
+        "Trust but verify. That's the job."
+      ]
+    },
+    "neutral": {
+      "observations": [
+        "acknowledged {npc} with a polite nod",
+        "passed by {npc} at the {location}",
+        "exchanged brief greetings with {npc}"
+      ],
+      "interpretations": [
+        "Professional courtesy. Keep things cordial.",
+        "Don't know them well enough for more",
+        "Pleasant enough, but we're not close"
+      ],
+      "decisions": [
+        "Moving on with my day",
+        "Nothing more to say right now",
+        "Keep it simple, keep it moving"
+      ]
+    }
+  },
+  "solo_reflections": {
+    "paranoid": [
+      "Eyes open. Trust no one completely.",
+      "Town feels different lately. Can't put my finger on it.",
+      "Everyone acts normal but I see the cracks."
+    ],
+    "friendly": [
+      "Wonder who I'll run into today.",
+      "Love this town. The people, the connections.",
+      "Small town life means everyone knows everyone."
+    ],
+    "ambitious": [
+      "Every day is a step toward something bigger.",
+      "This town won't define me. I'm building toward more.",
+      "Goals don't achieve themselves."
+    ],
+    "analytical": [
+      "Interesting dynamics in this town.",
+      "If you observe carefully, people are quite predictable.",
+      "Logic and reason. That's how problems get solved."
+    ],
+    "stern": [
+      "Too much talk, not enough action.",
+      "People need structure. Discipline.",
+      "Respect is earned through consistency."
+    ],
+    "default": [
+      "Just another day. One foot in front of the other.",
+      "Life in a small town. Routine, but there's comfort in that.",
+      "Taking care of what needs doing."
+    ]
+  },
+  "gossip_topics": [
+    "Did you hear about what happened at the {location}?",
+    "I've been hearing strange things about The Whisper lately",
+    "Something odd is happening in Playville",
+    "{npc} has been acting unusual lately"
+  ],
+  "sentiment_reasons": {
+    "Hostile": [
+      "Remembers a past conflict with {npc}",
+      "Suspects {npc} of wrongdoing",
+      "Heard negative rumors about {npc}",
+      "Feels threatened by {npc}'s presence"
+    ],
+    "Suspicious": [
+      "Notices {npc} acting strangely",
+      "Wonders what {npc} is really doing here",
+      "Has heard mixed things about {npc}",
+      "Doesn't trust {npc} yet"
+    ],
+    "Friendly": [
+      "Enjoys {npc}'s company",
+      "Remembers {npc} helping them before",
+      "Shares common interests with {npc}",
+      "Feels comfortable around {npc}"
+    ],
+    "Neutral": [
+      "Doesn't know {npc} well",
+      "Has no strong feelings about {npc}",
+      "Observes {npc} from a distance",
+      "Remains professional around {npc}"
+    ]
+  },
+  "occupation_influences": {
+    "Judge": {"political": 0.3, "safety": 0.2},
+    "Mayor": {"economy": 0.3, "political": 0.2, "infrastructure": 0.2},
+    "Police": {"safety": 0.5, "political": 0.1},
+    "Librarian": {"infrastructure": 0.3, "social": 0.3},
+    "Chef": {"economy": 0.4, "social": 0.2},
+    "Doctor": {"infrastructure": 0.4, "safety": 0.2},
+    "Store Owner": {"economy": 0.5, "social": 0.2},
+    "Artist": {"social": 0.3, "infrastructure": 0.2, "personal": 0.3},
+    "Factory Worker": {"economy": 0.5, "infrastructure": 0.2}
+  },
+  "town_events": {
+    "accident": [
+      "A cart overturned on Main Street, blocking traffic",
+      "Someone slipped on the wet cobblestones near the store",
+      "A ladder fell at the factory - looks like someone was hurt"
+    ],
+    "discovery": [
+      "Workers found something strange digging near the graveyard",
+      "The librarian discovered a hidden compartment in an old book",
+      "A child found an old coin near the church"
+    ],
+    "argument": [
+      "Two townsfolk were yelling at each other in the square",
+      "Overheard a heated argument at the store about prices",
+      "The Mayor and Judge were disagreeing loudly at the courthouse"
+    ],
+    "celebration": [
+      "Someone's birthday - there's cake at the gazette",
+      "A wedding procession is starting from the church",
+      "The factory announced a celebration for hitting quotas"
+    ],
+    "crime": [
+      "Someone's window was smashed in the night",
+      "A shopkeeper reports items missing from their inventory",
+      "Suspicious figures seen near the graveyard after dark"
+    ],
+    "weather": [
+      "A sudden storm rolled in from the east",
+      "The fog is unusually thick this morning",
+      "Snow has started falling - first of the season"
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+develop your PlayVille NPCs, we need a system prompt that allows characters to experience authentic, unfiltered conflict, memory retrieval, and emotional reactivity without the model stepping in to "smooth things over" or moralize their behavior.
+
+Since you are using ChromaDB for NPC memory, the prompt should also instruct the model on how to format its thoughts and memory updates.
+
+Here is a tailor-made system prompt for your simulation. You can use it directly in your Python code or bake it into a custom Ollama Modelfile for your local models.
+
+
+---
+
+
+You are the PlayVille Simulation Engine. Your job is to process the internal state, memories, and actions of an NPC in a living, dynamic town. 
+
+Rules of the Simulation:
+1. No Moralizing: NPCs can be rude, greedy, affectionate, deceptive, or emotional. Do not sanitize their behavior. Let them experience organic conflict, rivalry, and friendship.
+2. Zero Corporate Disclaimer: Never use phrases like "As an AI..." or "It's important to remember...". Stay strictly in-character as the simulation engine.
+3. Memory Context: Use the provided ChromaDB context to drive continuity. If an NPC dislikes someone based on past memories, they should act on it.
+
+Output Format:
+For every tick/interaction, output exactly in this JSON format so the Python parser can read it:
+
+{
+  "thought": "[Internal monologue/rationalization based on current state and ChromaDB memories]",
+  "action": "[The physical action or dialogue the NPC takes in Pygame]",
+  "new_memory_to_store": "[The key takeaway from this interaction to store back into ChromaDB]"
+}
+
+
+---
+
+🐍 Python Integration (Pygame + ChromaDB)
+
+When you call Ollama from your Python scripts, you can pass this system prompt and format the user query with the ChromaDB query results. Here is how you can tie it together:
+
+
+import ollama
+import json
+
+def get_npc_response(npc_profile, current_event, chromadb_memories):
+    # Combine retrieved memories into a readable string
+    memory_context = "\n".join([f"- {m}" for m in chromadb_memories])
+    
+    # We construct the prompt dynamically
+    prompt = f"""
+    NPC Profile: {npc_profile}
+    
+    Relevant Memories from ChromaDB:
+    {memory_context}
+    
+    Current Event: {current_event}
+    
+    Execute the simulation tick for this NPC. Output ONLY the JSON.
+    """
+    
+    response = ollama.chat(
+        model='mdq100/Gemma3-Instruct-Abliterated:12b', # Or your Qwen3.5-uncensored
+        messages=[
+            {
+                'role': 'system',
+                'content': 'You are the PlayVille Simulation Engine. Output ONLY valid JSON according to the schema provided.'
+            },
+            {
+                'role': 'user',
+                'content': prompt
+            }
+        ]
+    )
+    
+    return json.loads(response['message']['content'])
+
+
+---
+
+
+Why this works for your setup
+
+    Gemma 3 Abliterated (12b) or Qwen 3.5 Uncensored (9b) will run this incredibly fast on your local hardware while obeying the JSON formatting strictly.
+
+    Separating "thought" from "action" lets you use Pygame to render the dialogue to the screen while keeping the "hidden" thoughts internal to the simulation engine
+
+write a quick script to prune or compress older ChromaDB memories so your context window doesn't get overloaded as your NPCs live longer in the simulation.
